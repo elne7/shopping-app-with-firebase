@@ -1,5 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_app/methods/show_my_dialog.dart';
+import 'package:simple_shopping_app/views/login_view.dart';
 import 'package:simple_shopping_app/widgets/custom_button.dart';
 import 'package:simple_shopping_app/widgets/custom_text.dart';
 import 'package:simple_shopping_app/widgets/custom_text_form_field.dart';
@@ -117,9 +120,48 @@ class _SignUpViewState extends State<SignUpView> {
                   return null;
                 },
               ),
+              Row(
+                children: [
+                  const Text('Alredy have an account? '),
+                  TextButton(
+                    child: const Text('LogIn'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginView();
+                          },
+                        ),
+                      );
+                    },
+                  )
+                ],
+              ),
               const SizedBox(height: 50),
               // Initializing an ElevatedButton to submit
-              CustomButton(formKey: formKey)
+              CustomButton(
+                onPressed: () async {
+                  // Checking if the form validation is correct
+                  if (formKey.currentState!.validate()) {
+                    showMyDialog(context);
+                  }
+                  try {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passController.text,
+                    );
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'weak-password') {
+                      print('The password provided is too weak.');
+                    } else if (e.code == 'email-already-in-use') {
+                      print('The account already exists for that email.');
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
+                },
+              )
             ],
           ),
         ),
