@@ -1,5 +1,6 @@
 {
     "Sign_Up" : "Sign Up",
+    "Log_In" : "Log_In",
     "title" : "Shopping App",
     "products" : "Our Products",
     "offers" : "Hot Offers",
@@ -7,7 +8,8 @@
     "return" : "Return back",
     "change_lang" : "Change Language",
     "switch" : "Switch between en & ar",
-    "success" : "Account Successfully Created!",
+    "sign_up_success" : "Account Successfully Created!",
+    "log_in_success" : "Account Successfully Logged In!",
     "enter" : "Go to the app",
     "submit" : "Submit"
 }

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:simple_shopping_app/views/home_view.dart';
 
-Future<void> showMyDialog(BuildContext context) async {
+Future<void> showMyDialog(BuildContext context, String title, String content) async {
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) {
       // Display the dialog
       return AlertDialog(
-        title: Text(tr('Sign_Up')),
-        content: Text(tr('success')),
+        title: Text(title),
+        content: Text(content),
         actions: <Widget>[
           TextButton(
             child: Text(

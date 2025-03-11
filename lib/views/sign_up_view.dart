@@ -141,10 +141,15 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(height: 50),
               // Initializing an ElevatedButton to submit
               CustomButton(
+                text: tr('Sign_Up'),
                 onPressed: () async {
                   // Checking if the form validation is correct
                   if (formKey.currentState!.validate()) {
-                    showMyDialog(context);
+                    showMyDialog(
+                      context,
+                      tr('Sign_Up'),
+                      tr('sign_up_success'),
+                    );
                   }
                   try {
                     await FirebaseAuth.instance.createUserWithEmailAndPassword(
