@@ -149,7 +149,15 @@ class _SignUpViewState extends State<SignUpView> {
                       context,
                       tr('Sign_Up'),
                       tr('sign_up_success'),
+                      () {
+                        // Navigate to the home page
+                        Navigator.pop(context);
+                      },
                     );
+                    nameController.clear();
+                    emailController.clear();
+                    passController.clear();
+                    confirmPassController.clear();
                   }
                   try {
                     await FirebaseAuth.instance.createUserWithEmailAndPassword(

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:simple_shopping_app/methods/show_my_dialog.dart';
+import 'package:simple_shopping_app/views/home_view.dart';
 import 'package:simple_shopping_app/widgets/custom_button.dart';
 import 'package:simple_shopping_app/widgets/custom_text.dart';
 import 'package:simple_shopping_app/widgets/custom_text_form_field.dart';
@@ -85,6 +87,18 @@ class _LoginViewState extends State<LoginView> {
                     context,
                     tr('LogIn'),
                     tr('log_in_success'),
+                    () {
+                      // Navigate to the home page
+                      Navigator.push(
+                        context,
+                        // Adding fade animation with page transition
+                        PageTransition(
+                          duration: const Duration(seconds: 1),
+                          type: PageTransitionType.fade,
+                          child: const HomeView(),
+                        ),
+                      );
+                    },
                   );
                 } on FirebaseAuthException catch (e) {
                   SnackBar snackBar = const SnackBar(
