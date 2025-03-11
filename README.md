@@ -1,13 +1,14 @@
-# localization_perform
+# Shopping-App-with-Firebase
 
-Considering my last project the `Simple Shopping App`, This Task is a complement for the previous project.
-You can see the shopping app from here: [https://github.com/elne7/Simple-Shopping-App.git]
+A new flutter task to create a shopping app with Firebase Authentication. This app will allow users to sign up their accounts then they can log in with their email and password.
 
-**Features:**
+## **Features:**
 
-- Displays the app in English and can change it to Arabic.
-- Adding `Drawer` for side options in the home page.
+- User Authentication with Firebase Authentication.
+- User can sign up with email and password.
+- User can log in with email and password.
+- User can log out from the app.
 
 **Dependencies:**
 
-- Uses the `EasyLocalization` package to localise the app.
+- Uses the `Firebase_Auth` package to access Firebase Authentication.
